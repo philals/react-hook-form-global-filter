@@ -16,17 +16,17 @@ interface GlobalFilterOptions {
  * Global filter class for managing input filtering
  */
 export class GlobalInputFilter {
-  private filteredChars: string[];
-  private alertMessage: (char: string) => string;
-  private pasteAlertMessage: (chars: string[]) => string;
-  private targetSelector: string;
-  private eventType: "keypress" | "keydown";
-  private enablePasteFiltering: boolean;
+  private filteredChars!: string[];
+  private alertMessage!: (char: string) => string;
+  private pasteAlertMessage!: (chars: string[]) => string;
+  private targetSelector!: string;
+  private eventType!: "keypress" | "keydown";
+  private enablePasteFiltering!: boolean;
   private eventHandler: ((event: KeyboardEvent) => void) | null = null;
   private pasteHandler: ((event: ClipboardEvent) => void) | null = null;
 
   constructor(options: GlobalFilterOptions = {}) {
-    this.filteredChars = options.filteredChars || ["@", "#"];
+    this.filteredChars = (options.filteredChars || ["@", "#"]) as string[];
     this.alertMessage =
       options.alertMessage ||
       ((char: string) =>
@@ -146,7 +146,7 @@ export class GlobalInputFilter {
    * Update filtered characters
    */
   setFilteredChars(chars: string[]): void {
-    this.filteredChars = chars;
+    this.filteredChars = [...chars] as string[];
   }
 
   /**
