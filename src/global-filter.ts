@@ -58,7 +58,7 @@ export class GlobalInputFilter {
 
       // Check if target matches our selector
       if (target.matches && target.matches(this.targetSelector)) {
-        const key = event.key;
+        const key: string = event.key;
 
         // Check if the pressed key is in our filtered characters
         if (this.filteredChars.includes(key)) {
@@ -77,9 +77,9 @@ export class GlobalInputFilter {
         if (target.matches && target.matches(this.targetSelector)) {
           const clipboardData = event.clipboardData;
           if (clipboardData) {
-            const pastedText = clipboardData.getData("text/plain");
-            const filteredCharsFound = this.filteredChars.filter((char) =>
-              pastedText.includes(char)
+            const pastedText: string = clipboardData.getData("text/plain");
+            const filteredCharsFound: string[] = this.filteredChars.filter(
+              (char: string) => pastedText.includes(char)
             );
 
             if (filteredCharsFound.length > 0) {
