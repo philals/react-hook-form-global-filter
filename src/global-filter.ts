@@ -206,7 +206,7 @@ export const filterInput = (
   // Show alert if characters were filtered
   if (value.length !== filteredValue.length) {
     const chars = filteredChars.join(" and ");
-    alert(`<LuiModal>The characters ${chars} are filtered out.</LuiModal>`);
+    alert(`LuiModal: The characters ${chars} are filtered out.`);
   }
 
   return filteredValue;
